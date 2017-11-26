@@ -60,7 +60,6 @@ class MarioTask(object):
             actions = network.feed(net_input)[-7:-1]
             action = [0 if actions[i] < 0.5 else 1 for i in range(actions.size)]
             state, reward, done, info = env.step(action)
-            print(float(info['distance'])/float(steps))
             if done or type(state)==type(None) or float(info['distance'])/float(steps) <= 0.5:
                 env.close()
                 env.reset()
